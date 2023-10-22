@@ -53,6 +53,7 @@ fn print_main_menu(out: anytype, bw: anytype) !void {
 
 const chapter_01_exercises = struct {
     pub const exercise_01 = @import("1. A Tutorial Introduction/1. Hello, World.zig");
+    pub const exercise_02 = @import("1. A Tutorial Introduction/2. Escape Sequences.zig");
 };
 
 fn chapter_01(out: anytype, bw: anytype, buf: *[100]u8) !void {
@@ -67,6 +68,7 @@ fn chapter_01(out: anytype, bw: anytype, buf: *[100]u8) !void {
         switch (choice) {
             // TODO: add some visual delimiters around an exercise run to make it easier to see
             1 => { try chapter_01_exercises.exercise_01.main(); },
+            2 => { try chapter_01_exercises.exercise_02.main(); },
             else => {
                 choice = 0;
                 continue;
@@ -79,6 +81,7 @@ fn print_chapter_01_menu(out: anytype, bw: anytype) !void {
     try out.print("--------------------------------------\n", .{});
     try out.print("Chapter 1 - A Tutorial Introduction\n\n", .{});
     try out.print("\t1. Hello World\n", .{});
+    try out.print("\t2. Escape Sequences\n", .{});
     try out.print("\t0. Choose another chapter\n", .{});
     try out.print("--------------------------------------\n\n", .{});
 
