@@ -34,7 +34,7 @@ pub fn main() !void {
 
 // TODO: I don't fully get why the std.io.Writer type errors out, so... anytype
 fn print_main_menu(out: anytype, bw: anytype) !void {
-    try out.print("----------------------------------------\n", .{});
+    try out.print("------------------------------------------------\n", .{});
     try out.print("The C Programming Language (In Zig)\n\n", .{});
     try out.print("\t1. A Tutorial Introduction\n", .{});
     try out.print("\t2. Types, Operators and Expressions\n", .{});
@@ -45,7 +45,7 @@ fn print_main_menu(out: anytype, bw: anytype) !void {
     try out.print("\t7. Input and Output\n", .{});
     try out.print("\t8. The UNIX System Interface\n", .{});
     try out.print("\t0. Exit\n", .{});
-    try out.print("----------------------------------------\n\n", .{});
+    try out.print("------------------------------------------------\n\n", .{});
 
     try out.print("Choose a chapter: ", .{});
     try bw.*.flush(); // don't forget to flush!
@@ -54,6 +54,8 @@ fn print_main_menu(out: anytype, bw: anytype) !void {
 const chapter_01_exercises = struct {
     pub const exercise_01 = @import("1. A Tutorial Introduction/1. Hello, World.zig");
     pub const exercise_02 = @import("1. A Tutorial Introduction/2. Escape Sequences.zig");
+    pub const exercise_03 = @import("1. A Tutorial Introduction/3. Fahrenheit to Celsius.zig");
+    pub const exercise_04 = @import("1. A Tutorial Introduction/4. Celsius to Fahrenheit.zig");
 };
 
 fn chapter_01(out: anytype, bw: anytype, buf: *[100]u8) !void {
@@ -69,6 +71,8 @@ fn chapter_01(out: anytype, bw: anytype, buf: *[100]u8) !void {
             // TODO: add some visual delimiters around an exercise run to make it easier to see
             1 => { try chapter_01_exercises.exercise_01.main(); },
             2 => { try chapter_01_exercises.exercise_02.main(); },
+            3 => { try chapter_01_exercises.exercise_03.main(); },
+            4 => { try chapter_01_exercises.exercise_04.main(); },
             else => {
                 choice = 0;
                 continue;
@@ -82,6 +86,8 @@ fn print_chapter_01_menu(out: anytype, bw: anytype) !void {
     try out.print("Chapter 1 - A Tutorial Introduction\n\n", .{});
     try out.print("\t1. Hello World\n", .{});
     try out.print("\t2. Escape Sequences\n", .{});
+    try out.print("\t3. Fahrenheit to Celsius\n", .{});
+    try out.print("\t4. Celsius to Fahrenheit\n", .{});
     try out.print("\t0. Choose another chapter\n", .{});
     try out.print("--------------------------------------\n\n", .{});
 
