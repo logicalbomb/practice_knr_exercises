@@ -56,6 +56,7 @@ const chapter_01_exercises = struct {
     pub const exercise_02 = @import("1. A Tutorial Introduction/2. Escape Sequences.zig");
     pub const exercise_03 = @import("1. A Tutorial Introduction/3. Fahrenheit to Celsius.zig");
     pub const exercise_04 = @import("1. A Tutorial Introduction/4. Celsius to Fahrenheit.zig");
+    pub const exercise_05 = @import("1. A Tutorial Introduction/5. Inverted Temperature Table.zig");
 };
 
 fn chapter_01(out: anytype, bw: anytype, buf: *[100]u8) !void {
@@ -73,6 +74,9 @@ fn chapter_01(out: anytype, bw: anytype, buf: *[100]u8) !void {
             2 => { try chapter_01_exercises.exercise_02.main(); },
             3 => { try chapter_01_exercises.exercise_03.main(); },
             4 => { try chapter_01_exercises.exercise_04.main(); },
+            5 => { try chapter_01_exercises.exercise_05.main(); },
+            6 => { continue; }, 
+            7 => { continue; }, 
             else => {
                 choice = 0;
                 continue;
@@ -88,6 +92,9 @@ fn print_chapter_01_menu(out: anytype, bw: anytype) !void {
     try out.print("\t2. Escape Sequences\n", .{});
     try out.print("\t3. Fahrenheit to Celsius\n", .{});
     try out.print("\t4. Celsius to Fahrenheit\n", .{});
+    try out.print("\t5. Inverted Temperature Table\n", .{});
+    try out.print("\t6. (NOOP) EOF Comparison\n", .{});
+    try out.print("\t7. (NOOP) EOF Printing\n", .{});
     try out.print("\t0. Choose another chapter\n", .{});
     try out.print("--------------------------------------\n\n", .{});
 
